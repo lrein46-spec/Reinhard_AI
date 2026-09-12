@@ -1,0 +1,137 @@
+
+PART 1 - 
+
+Business Problem - Fraud Detection 
+
+1. What is this problem - Fraud detection is a problem banks are constantly trying to solve. It 
+involves flagging accounts that have some sort of suspicious activity on their transactions 
+by looking at unusually high payments or an unusual frequency of payments. The goal is to stop 
+the fraud from occurring before whatever is stolen can actually be processed by the bank. If 
+they ensure the transactions never go through then they have successfully prevented the fraud 
+from occurring.
+
+2. Why is this problem important to the organization - Banks rely on convincing their customers that
+they can be trusted to store the customers' money safely. If they can not properly identify fraud 
+happening, those customers will lose that trust and find a different bank that can protect their money. 
+So as well as protecting their own money and investments, eliminating fraud is also a way to draw 
+more customers because safety is the primary concern when people are trying to store their money. If
+one bank does not have enough security, they can be sure the customer will be able to find another that 
+has a much better system. 
+
+3. Who is affected by this problem - The business and the customers are equally affected. THe customers can lose 
+their hard earned money without enough fraud protection. This has lead to some people having ruined lives if they 
+do not ever get that money back. Also, the business can go under if they let the fraud fester too much in their system.
+The government might also have a stake in this because sometimes when banks go under, if they are important enough to the economy 
+the government almost has to lend them money to keep them afloat. 
+
+
+PART 2 -
+
+1. What data would I need - For fraud detection, it would be best to track things like average transaction values, frequency 
+of transactions, origin of transactions, and type of items being purchased. By tracking abnormalities in these things, it 
+should be able to identify when suspicious transactions are happening.
+
+2. Where could the data come from - Ideally the data would be from past bank transactions and customer purchases over long periods
+of time. Along with this, each customer account would be flagged with whether or not fraud was committed and if so, when it was committed
+so the model could read the irregularities at the time of the frauds occurrence. 
+
+3. How much historical data is useful - Theoretically as much data as possible over the longest period of time possible is ideal because 
+fraud is not exactly a common occurrence and better average spending would be available for longer periods. Customer purchases may fluctuate
+in the short term, but will likely average out over long periods. Also with a smaller dataset, there might not be enough fraudulent occurrences 
+for the model to get a good idea of what it looks like. 
+
+4. Most important values - The most important variables are the average transaction value and whether or not fraud occurred. It would not be as accurate,
+but technically a model could give rudimentary predictions on fraud based on examining if the average spending suddenly shoots up to a high value. Obviously 
+without the past determinations of fraud occurring, the model would not know how to predict it at all. 
+
+5. What could be missing or inaccurate - If the customers data has not been recorded over enough time to establish a good average (or usual) value for 
+the variables, then the AI might falsely flag fraud for purchases the customer is trying to make. Also, the customer might travel far away from home 
+and the AI could falsely flag that as unusual activity.
+
+
+Link to data set - https://www.kaggle.com/datasets/dhanushnarayananr/credit-card-fraud
+
+
+PART 3 - 
+
+Features for data set -
+1. Distance from home: when a transaction is completed, how far away it is from the registered customers home
+2. Distance from last transaction: when a new transaction is completed, how far it is from the previous one 
+3. Ratio to median purchase price: how far a transactions value is from the normal value based on that customer
+4. Repeat retailer: if the customer is purchasing from somewhere they have been or not been to before 
+5 Online order: is the purchase online? 
+
+{
+6. Used chip: is the purchase through a credit card?
+7. Used pin number: is the purchase using a PIN number? 
+
+These features (6 & 7) are included in the data set, but most likely will not have as much impact on determining fraud, so
+I will not include them in this analysis.
+}
+
+8. Fraud - Based on all the previous variables, is a fraudulent transaction occurring? This is the classification
+the model is trying to determine (Fraud = yes/no?) 
+
+
+PART 4 - 
+
+1. Unsupervised or Supervised learning - This problem is best solved using supervised learning. It relies on previous 
+data and already has a defined label that the model is trying to determine. Trying to determine fraud based on random variables
+would result in many false positives or negatives that would make it extremely hard for customers to use accounts, as they would 
+constantly be getting flagged or losing money to fraud. Therefore, supervised learning will give the best possible data so the model can 
+make accurate predictions. 
+
+2. Classification or Prediction - This model is clearly based on a classification label. It is determining a yes/no option with
+whether or not the transactions occurring on the customer’s account are fraud. A prediction would make no sense because the model does not 
+care about the actual amount, it only wants to see if there is fraud. It does look at the variance from the median spending, but ultimately 
+only the difference matters, not the actual amount, so classification is much better. 
+
+
+PART 5 - 
+
+1. Three possible data quality problems - One data quality problem could be the 'ratio to median purchase price'. Outliers in the customers data
+for that variable could mean incorrect assumptions are made by the model. Another issue would be customers that have moved home addresses 
+so the 'distance from home' variable is outdated and showing an extremely high value. Finally, in some cases, the distance from last transaction
+is very high, but online order is also true, meaning it likely should not be marked fraud just based on those, but it was by the AI.
+
+2. What would happen if the data quality was poor - With poor data, the model will be fed unreliable results in its supervised learning. Due to
+this, it will have trouble accurately predicting if fraud is occurring. The bank might either get a lot of false reports or no reports at all 
+of fraud and will lose customers and possibly even get sued or shut down because of how important this issue is. With safety as one of its number
+one priority to stay in business, poor data quality for fraud detection would be extremely devastating. 
+
+
+PART 6 - 
+
+SUMMARY: 
+
+Business Problem: A bank wants to detect any and all fraud occurring in customer accounts
+
+Data Needed: Normal transaction prices, distance of transaction from usual locations, and whether or not the 
+customer has shopped there already are essential data points
+
+Learning Type: Supervised learning 
+Why: You need to see previous occurrences to know what signs to look for when fraud is happening 
+
+Classification or Prediction: Classification - (Fraud / Not Fraud) 
+
+Data Quality Problems: Outliers in normal transaction price, moving home addresses, distance not calculating for being an online purchase
+
+Business Benefit: They attract more customers by promoting a safer environment for their money 
+
+Potential Risk: The model predicts many false positives and people are frustrated at not being able to easily access their money
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
