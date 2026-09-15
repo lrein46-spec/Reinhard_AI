@@ -1,0 +1,81 @@
+
+PART 1 - FEATURES/LABELS
+
+
+1. Features in my data - As part of the fraud detection AI, the features are the normal (median)
+transaction price for a customer, the distance from the last completed transaction, and the distance
+from the customer's home. The other two are whether or not it was somewhere the customer has shopped already,
+and if the order was online or not. Those are not as critical as the others, but can still make some impact 
+on detecting fraud. 
+
+2. Label for data - The model is trying to predict if fraud is occurring, It is a classification label
+because it is choosing between multiple things, not predicting a value. It also uses supervised learning because
+historical customer data is the best indicator of seeing what fraud looks like on a customer account. 
+
+
+PART 2 - MODEL OUTCOMES
+
+
+3. Training data - Training data contains a majority (but not all) of the available historical 
+customer data for the model to learn patterns from. The model will examine about 80 percent of the available data 
+and attempt to draw conclusions about exactly what patterns make it suspect that fraud is occurring. It will not simply 
+memorize certain thresholds that immediately trigger fraud detection, but instead look at general trends to be able to 
+predict it in as many unique circumstances as possible. The model is useless if it can only predict the historical data and 
+not any new data. 
+
+4. Testing data - The testing data needs to be separate from the training to see if the model can 
+correctly predict the testing data after it has been trained. This is the test that determines if the model has actually 
+learned patterns in the data being given and can identify predictions for data it has never seen before. If the model has 
+just memorized the training data and not learned anything from it, the model will fail to do anything productive when given
+new data. 
+
+5. False positive - A false positive is when the model identifies something as positive, but it is wrong and the 
+actual result should be negative. In this case that would be the model identifying fraud when none is occurring. 
+Based on the model's features, this could happen when a customer purchases something high above their median price, or if they happen to 
+be on vacation far from their home address. The AI would flag these as abnormal, and while they are, this is not always a guarantee of fraud.
+
+6. False negative - A false negative is when the AI predicts the result as negative, but the actual result should be 
+positive. In this case that would be the model being unable to identify when fraud is occurring. Since this model
+is analyzing normal customer transactions on their accounts, it would fail to detect fraud if there was no spike in abnormal activity on
+the account. Essentially, because there is only these five features, if the criminal is good enough at committing fraud, they could easily
+understand what they need to do to not be detected, at least for long enough that they can get away with it before the customer would notice
+and file a report themselves.
+
+7. Precision or recall - While precision is important for this model since predicting too many positives will be a large
+inconvenience for customers constantly getting fraud alerts, high recall is ultimately what the model should be aiming for. With something as serious 
+as fraud it is definitely preferred that the model is able to find all cases of fraud, even if it is wrong sometimes. Customers would most likely agree that 
+it is better to get ten fraud alerts where only one of them is real than to get no alerts, but their money is stolen from them. There obviously must be 
+some balance between the two, but recall is the clear priority. 
+
+
+PART 3 - DATA/PREDICTIONS
+
+
+8. Poor data quality - Some data quality issues could be that historical, and even new data, might not have enough
+of a transaction history to establish a good median, so the model would have trouble identifying what is abnormal. Also, if the data does not update properly,
+a customer moving home addresses could mess with the predictions with the 'distance from home' feature showing many high abnormalities where there are actually
+none. Finally, the model should identify that an online purchase may mean that a far distance from home or the last transaction should be void from consideration
+because the customer could be ordering from their home but it is coming from far away. 
+
+9. Overfitting the model - Similar to the previous question, if the model does not consider how each data point affects the other data
+points, it will likely overfit. The online order being connected to the distance features is one area, and the median price being connected to distance from
+home is another. With an online order, the distance features are likely to shoot up, and if the customer is on vacation (high distance from home) the transaction
+prices will also likely shoot up. 
+
+10. Can the results be trusted - Like previously stated, the most important factor to trust this model's predictions is the level of recall it can achieve. High
+recall means the model is identifying as many fraudulent transactions as possible and so it is successful in its goal. The only danger with this model is, it has 
+a low amount of features to truly be used as a real world model for an actual bank. There are so many more factors to consider, the ones in this one are just core
+features that are likely to be the most important. 
+
+
+
+
+
+
+
+
+
+
+
+
+
